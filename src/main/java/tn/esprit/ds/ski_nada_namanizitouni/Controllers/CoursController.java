@@ -23,17 +23,17 @@ public class CoursController {
         return iCoursService.retrieveCours(numCours);
     }
 
-    @GetMapping("addCours")
+    @PostMapping("addCours")
     public Cours addCours(@RequestBody Cours cours){
         return iCoursService.addCours(cours);
     }
 
-    @GetMapping("updateCours")
+    @PutMapping("updateCours")
     public Cours updateCours(@RequestBody Cours cours){
         return iCoursService.updateCours(cours);
     }
 
-    @GetMapping("{numCours}")
+    @DeleteMapping("{numCours}")
     public void removeCours(@PathVariable Long numCours){
         iCoursService.removeCours(numCours);
     }

@@ -1,5 +1,6 @@
 package tn.esprit.ds.ski_nada_namanizitouni.Projet_ski;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Skieur {
     @OneToMany(mappedBy = "skieurs")
     private List<Inscription> inscriptions;
     @ManyToMany(mappedBy = "skieurs")
+    @JsonIgnore
     private List<Piste> pistes;
     @OneToOne(cascade = CascadeType.REMOVE)
     private Abonnement abonnement;

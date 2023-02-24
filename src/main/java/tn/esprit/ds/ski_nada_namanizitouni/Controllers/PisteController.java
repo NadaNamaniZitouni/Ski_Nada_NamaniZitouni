@@ -23,17 +23,17 @@ public class PisteController {
         return iPisteService.retrievePiste(numPiste);
     }
 
-    @GetMapping("addPiste")
+    @PostMapping("addPiste")
     public Piste addPiste(@RequestBody Piste piste){
         return iPisteService.addPiste(piste);
     }
 
-    @GetMapping("updatePiste")
+    @PutMapping("updatePiste")
     public Piste updatePiste(@RequestBody Piste piste){
         return iPisteService.updatePiste(piste);
     }
 
-    @GetMapping("{numPiste}")
+    @DeleteMapping("{numPiste}")
     public void removePiste(@PathVariable Long numPiste){
         iPisteService.removePiste(numPiste);
     }

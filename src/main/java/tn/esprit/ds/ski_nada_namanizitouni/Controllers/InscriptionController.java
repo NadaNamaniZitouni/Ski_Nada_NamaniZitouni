@@ -23,17 +23,17 @@ public class InscriptionController {
         return iinscriptionService.retrieveInscription(numInscription);
     }
 
-    @GetMapping("addInscription")
+    @PostMapping("addInscription")
     public Inscription addInscription(@RequestBody Inscription inscription){
         return iinscriptionService.addInscription(inscription);
     }
 
-    @GetMapping("updateInscription")
+    @PutMapping("updateInscription")
     public Inscription updateInscription(@RequestBody Inscription inscription){
         return iinscriptionService.updateInscription(inscription);
     }
 
-    @GetMapping("{numInscription}")
+    @DeleteMapping("{numInscription}")
     public void removeInscription(@PathVariable Long numInscription){
         iinscriptionService.removeInscription(numInscription);
     }

@@ -13,6 +13,7 @@ import java.util.List;
 public class AbonnementController {
     @Autowired
     IAbonnementService iAbonnementService;
+    //localhost:9099/retrieveAllAbonnement
     @GetMapping("retrieveAllAbonnement")
     public List<Abonnement> getAll(){
 
@@ -23,13 +24,13 @@ public class AbonnementController {
     public Abonnement retrieveAbonnement (@PathVariable Long numAbon){
         return iAbonnementService.retrieveAbonnement(numAbon);
     }
-
+    //localhost:9099/addAbonnement
     @PostMapping("addAbonnement")
 
     public Abonnement addAbonnement(@RequestBody Abonnement abonnement){
         return iAbonnementService.addAbonnement(abonnement);
     }
-
+    //localhost:9099/updateAbonnement
     @PutMapping("updateAbonnement")
 
     public Abonnement updateAbonnement(@RequestBody Abonnement abonnement){
