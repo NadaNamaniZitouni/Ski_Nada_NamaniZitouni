@@ -14,6 +14,7 @@ import java.util.List;
 public class IMoniteurServiceImplement implements IMoniteurService{
     @Autowired
     MoniteurRepo moniteurRepo;
+    @Autowired
     CoursRepo coursRepo;
     @Override
     public List<Moniteur> retrieveAllMoniteur() {
@@ -50,5 +51,6 @@ public class IMoniteurServiceImplement implements IMoniteurService{
             return moniteurRepo.save(monitor);
         }
         return null;
+        
     }
 }

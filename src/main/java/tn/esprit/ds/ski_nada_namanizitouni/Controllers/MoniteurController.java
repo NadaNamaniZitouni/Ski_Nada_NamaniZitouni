@@ -8,7 +8,7 @@ import tn.esprit.ds.ski_nada_namanizitouni.Services.IMoniteurService;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("moniteur")
 public class MoniteurController {
     @Autowired
     IMoniteurService iMoniteurService;
@@ -19,17 +19,17 @@ public class MoniteurController {
     }
 
     @GetMapping("{numMoniteur}")
-    public Moniteur retrieveMoniteur (Long numMoniteur){
+    public Moniteur retrieveMoniteur (@PathVariable Long numMoniteur){
         return iMoniteurService.retrieveMoniteur(numMoniteur);
     }
 
     @PostMapping("addMoniteur")
-    public Moniteur addMoniteur (Moniteur moniteur){
+    public Moniteur addMoniteur (@RequestBody Moniteur moniteur){
         return iMoniteurService.addMoniteur(moniteur);
     }
 
     @PutMapping("updateMoniteur")
-    public Moniteur updateMoniteur(Moniteur moniteur){
+    public Moniteur updateMoniteur(@RequestBody Moniteur moniteur){
         return iMoniteurService.updateMoniteur(moniteur);
     }
 
@@ -39,7 +39,7 @@ public class MoniteurController {
     }
 
     @PostMapping("{numCours}")
-    public Moniteur addInstructorAndAssignToCourse(Moniteur moniteur, Long numCours){
+    public Moniteur addInstructorAndAssignToCourse(@RequestBody Moniteur moniteur,@PathVariable Long numCours){
         return iMoniteurService.addInstructorAndAssignToCourse(moniteur, numCours);
     }
 }

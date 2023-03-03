@@ -45,7 +45,7 @@ public class SkieurController {
     }
 
     @PutMapping("{numSkieur}{numAbon}")
-    public Skieur AssignSkierToSubscription(long numSkieur, long numAbon) {
+    public Skieur AssignSkierToSubscription(@PathVariable long numSkieur, @PathVariable long numAbon) {
         return iSkieurService.AssignSkierToSubscription(numSkieur, numAbon);
     }
 

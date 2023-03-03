@@ -2,10 +2,10 @@ package tn.esprit.ds.ski_nada_namanizitouni.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.ds.ski_nada_namanizitouni.Projet_ski.Abonnement;
-import tn.esprit.ds.ski_nada_namanizitouni.Projet_ski.Piste;
-import tn.esprit.ds.ski_nada_namanizitouni.Projet_ski.Skieur;
+import org.springframework.util.Assert;
+import tn.esprit.ds.ski_nada_namanizitouni.Projet_ski.*;
 import tn.esprit.ds.ski_nada_namanizitouni.Repositories.AbonnementRepo;
+import tn.esprit.ds.ski_nada_namanizitouni.Repositories.InscriptionRepo;
 import tn.esprit.ds.ski_nada_namanizitouni.Repositories.PisteRepo;
 import tn.esprit.ds.ski_nada_namanizitouni.Repositories.SkieurRepo;
 import java.util.List;
@@ -14,8 +14,12 @@ import java.util.List;
 public class ISkieurServiceImplement implements ISkieurService{
     @Autowired // injection // it is depricated
     SkieurRepo skieurRepo; // injection
+    @Autowired
     PisteRepo pisteRepo;
+    @Autowired
     AbonnementRepo abonnementRepo;
+    @Autowired
+    InscriptionRepo inscriptionRepo;
     @Override
     public List<Skieur> retrieveAllSkieurs() {
         return skieurRepo.findAll();
@@ -65,11 +69,25 @@ public class ISkieurServiceImplement implements ISkieurService{
     @Override
     public Skieur AssignSkierToSubscription(long numSkieur, long numAbon) {
         Skieur skieur =  skieurRepo.findById(numSkieur).orElse(null);
+        Assert.notNull(skieur, "skieur not found");
         Abonnement abonnement = abonnementRepo.findById(numAbon).orElse(null);
-        if(skieur!=null && abonnement!=null) {
+        Assert.notNull(abonnement, "abonnement not found");
+        //if(skieur!=null && abonnement!=null) {
             skieur.setAbonnement(abonnement);
             return skieurRepo.save(skieur);
-        }
+        //}
+        //return null;
+    }
+
+    @Override
+    public Skieur addSkierAndAssignToCourse(Skieur skieur) {
         return null;
     }
+
+    @Override
+    public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+        return null;
+    }
+
+
 }
